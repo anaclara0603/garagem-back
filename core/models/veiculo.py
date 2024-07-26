@@ -3,11 +3,11 @@ from django.db import models
 from core.models import Modelo, Cor, Acessorio
 
 class Veiculo(models.Model):
-    modelo = models.ForeignKey( Modelo, on_delete=models.RESTRICT)
-    cor =  models.ForeignKey( Cor , on_delete=models.RESTRICT)
+    modelo = models.ForeignKey( Modelo, on_delete=models.PROTECT)
+    cor =  models.ForeignKey(Cor , on_delete=models.PROTECT)
     ano = models.DecimalField(max_digits=4, decimal_places=0)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
-    acessorios = models.ForeignKey( Acessorio, on_delete=models.RESTRICT)
+    acessorios = models.ForeignKey(Acessorio, on_delete=models.PROTECT)
 
     def __str__(self):
         return f"{self.modelo}"
